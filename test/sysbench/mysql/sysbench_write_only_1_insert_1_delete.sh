@@ -19,8 +19,6 @@ report_interval=600
 #  0: no limitation
 tps_limitation=0
 
-index_updates_num=0
-
 #print a log and then exit
 function EXIT() {
     [ $# -ne 0 ] && [ "$1" != "" ] && printf "$1\n"
@@ -39,7 +37,7 @@ sysbench --rand-type=uniform --db-driver=mysql --mysql-db=$db_name --mysql-host=
 
 echo "*************Run test*************************"
 # execute test
-sysbench --rand-type=uniform --db-driver=mysql --mysql-db=$db_name --mysql-host=$host --mysql-port=$port --mysql-user=$user --mysql-password=$passwd --report-interval=$report_interval --events=0 --threads=$thread_count --rate=$tps_limitation --time=$duration --percentile=99 /usr/share/sysbench/oltp_write_only.lua --tables=$db_table_num --table-size=$db_size_per_table --sum_ranges=0 --order_ranges=0 --distinct_ranges=0 --index_updates=$index_updates_num --non_index_updates=0 --point_selects=0 run
+sysbench --rand-type=uniform --db-driver=mysql --mysql-db=$db_name --mysql-host=$host --mysql-port=$port --mysql-user=$user --mysql-password=$passwd --report-interval=$report_interval --events=0 --threads=$thread_count --rate=$tps_limitation --time=$duration --percentile=99 /usr/share/sysbench/oltp_write_only.lua --tables=$db_table_num --table-size=$db_size_per_table --sum_ranges=0 --order_ranges=0 --distinct_ranges=0 --index_updates=0 --non_index_updates=0 --point_selects=0 run
 [ $? -eq 0 ] || EXIT "Start benchmark FAILED!"
 
 echo "************Clean env**************************"
