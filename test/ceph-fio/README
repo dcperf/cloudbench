@@ -1,0 +1,8 @@
+Document explain:
+
+fio-init.conf: Before test, exec"fio fio-init.conf" to write 8 images.
+fio-env.conf: It's a fio conf, using env parameter to decide FIO_SIZE, FIO_DEPTH, FIO_JOBS.
+test-env.sh: test script, modify the arry to test what you need.
+item.sh: print test item, such as "4k-8depth".
+get-*.sh: Extract the performance data(iops, bw, lat, tailat) from the test results and print it out. See "get-iops.sh" below.
+get-iops.sh: print all the iops from all "*.txt" in order.
